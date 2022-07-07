@@ -1,19 +1,24 @@
-<template>
-  <div>
-    <MyTable :arr="list" >
-      <template v-slot="scope">
-        <a :href="scope.row.headImgUrl">{{ scope.row.headImgUrl}}</a>
-      </template>
-    </MyTable>
-    <!-- scope: {row: obj} -->
-    <!-- <MyTable :arr="list">
-      <template v-slot="scope">
-        <a :href="scope.row.headImgUrl">{{scope.row.headImgUrl}}</a>
-      </template>
-    </MyTable> -->
+<template
+  ><div>
     <MyTable :arr="list">
-      <template v-slot="scope">
-        <img style="width: 100px;" :src="scope.row.headImgUrl" alt="" />
+      <template v-slot:myname="scope">
+        <input type="text" v-model="scope.row.name" />
+      </template>
+
+      <template v-slot:age="scope">
+        <input type="text" v-model="scope.row.age"
+      /></template>
+
+      <template #toux="scope">
+        <a v-if="scope.row.type == 0" :href="scope.row.headImgUrl">{{
+          scope.row.headerImgUrl
+        }}</a>
+        <img
+          v-else-if="scope.row.type == 1"
+          :src="scope.row.headImgUrl"
+          alt=""
+        />
+        <div v-else>{{ scope.row.headImgUrl }}</div>
       </template>
     </MyTable>
   </div>
@@ -63,7 +68,6 @@ export default {
       ],
     };
   },
- 
 };
 </script>
 

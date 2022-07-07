@@ -12,13 +12,14 @@
       <tbody>
         <tr v-for="(obj, index) in arr" :key="index">
           <td>{{ index + 1 }}</td>
-          <td>{{ obj.name }}</td>
-          <td>{{ obj.age }}</td>
           <td>
-            <slot :row="obj">
-              <!-- 默认值给上,如果使用组件不自定义标签显示默认文字 -->
-              {{ obj.headImgUrl }}
-            </slot>
+            <slot name="myname" :row="obj">{{ obj.name }}</slot>
+          </td>
+          <td>
+            <slot name="age" :row="obj">{{ obj.name }}</slot>
+          </td>
+          <td>
+            <slot name="toux" :row="obj"> </slot>
           </td>
         </tr>
       </tbody>
